@@ -30,4 +30,9 @@ final class ContentViewViewModel {
     print("🎣 feature value for '\(key)' called")
     return growthBook.getFeatureValue(feature: key, default: JSON.null).bool
   }
+
+  func refresh() {
+    print("🧼 Refreshing...")
+    lastUpdate = Date()
+  }
 }

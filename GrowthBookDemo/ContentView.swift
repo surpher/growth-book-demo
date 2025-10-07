@@ -3,8 +3,7 @@ import SwiftUI
 struct ContentView: View {
 
   private let featureKey = "growthbook-backgroundSync-demo"
-  let viewModel = ContentViewViewModel()
-  @State private var refreshToggle = false
+  @State private var viewModel = ContentViewViewModel()
 
   var body: some View {
     VStack {
@@ -34,7 +33,7 @@ struct ContentView: View {
       Spacer()
 
       Button("Refresh") {
-        refreshToggle.toggle()
+        viewModel.refresh()
       }
       .padding(12)
     }
@@ -68,7 +67,6 @@ private extension ContentView {
     }
   }
 }
-
 
 #Preview {
   ContentView()
