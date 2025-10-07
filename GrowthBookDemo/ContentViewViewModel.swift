@@ -4,6 +4,9 @@ import GrowthBook
 @Observable
 final class ContentViewViewModel {
 
+  let featureKey = "growthbook-backgroundSync-demo"
+  var lastUpdate = Date()
+
   private let growthBook: GrowthBookSDK
 
   init() {
@@ -33,6 +36,10 @@ final class ContentViewViewModel {
 
   func refresh() {
     print("🧼 Refreshing...")
+
     lastUpdate = Date()
+
+    print("  isFeatureOn('\(featureKey)'): \(isFeatureOn(featureKey))")
+    print("valueFor(key: '\(featureKey)'): \(valueFor(key: featureKey).debugDescription)")
   }
 }

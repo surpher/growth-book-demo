@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-  private let featureKey = "growthbook-backgroundSync-demo"
   @State private var viewModel = ContentViewViewModel()
 
   var body: some View {
@@ -14,7 +13,7 @@ struct ContentView: View {
         .foregroundStyle(.tint)
       Text("Hello, GrowthBook SDK!")
 
-      Text("flag: \"\(featureKey)\"")
+      Text("flag: \"\(viewModel.featureKey)\"")
         .font(.caption)
 
       Divider()
@@ -45,7 +44,7 @@ private extension ContentView {
 
   @ViewBuilder
   var isFeatureOn: some View {
-    if viewModel.isFeatureOn(featureKey) {
+    if viewModel.isFeatureOn(viewModel.featureKey) {
       Text("On")
         .fontWeight(.bold)
         .foregroundStyle(.green)
@@ -58,8 +57,8 @@ private extension ContentView {
 
   @ViewBuilder
   var directAccess: some View {
-    if let demoValue = viewModel.valueFor(key: "growthbook-backgroundSync-demo") {
-      Text("direct: \(demoValue ? "✅" : "❌")")
+    if let demoValue = viewModel.valueFor(key: viewModel.featureKey) {
+      Text("Value: \(demoValue ? "✅" : "❌")")
     } else {
       Text("no value")
         .fontWeight(.bold)
